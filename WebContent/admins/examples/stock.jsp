@@ -78,14 +78,8 @@
               </a>
             </li>
             
-            <li class="nav-item">
-              <a class="nav-link " href="User-data.jsp">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Users</span>
-              </a>
-            </li>
              <li class="nav-item">
-              <a class="nav-link active" href="#" style="background-color: aliceblue">
+              <a class="nav-link active" href="add_product.jsp" style="background-color: aliceblue">
                 <i class="ni ni-bold-right text-info"></i>
                 <span class="nav-link-text">Add Product</span>
               </a>
@@ -301,13 +295,13 @@
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Add</a></li>
+                  <li class="breadcrumb-item"><a href="add_product.jsp">Add</a></li>
                    
                 </ol>
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
+              <a href="add_product.jsp" class="btn btn-sm btn-neutral">New</a>
                
             </div>
           </div>
@@ -323,8 +317,7 @@
             <div class="card-header border-0">
               <h3 class="mb-0">Stock Info</h3>
             </div>
-            <p style="color:green;font-size: 18px;text-align: center"><% out.println(str);%></p>
-            <p style="color:green;font-size: 18px;text-align: center"><% out.println(str2);%></p>
+           
              
             <!-- Light table -->
             <div class="table-responsive">
@@ -336,6 +329,7 @@
                     <th scope="col" class="sort" data-sort="category">Category</th>
                     <th scope="col" class="sort" data-sort="budget">Quantity</th>
                     <th scope="col" class="sort" data-sort="status">price</th>
+                    <th scope="col" class="sort" data-sort="status">product_image</th>
                     <th scope="col">Action</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -355,6 +349,7 @@
                   out.println("<td scope='row'><div class='media align-items-center'><div class='media-body'><span class='name mb-0 text-sm' >"+rs.getString(3)+"</span></div></div></td>");
                   out.println("'<td class='budget'><span>" +rs.getInt(4)+" </span></td>");
                   out.println("'<td><span class='status'>" +rs.getFloat(5)+ "</span></td>");
+                  out.println("<td><span class='status'>" +rs.getString(6)+ "</span></td>");
                   out.println("'<td><a href='product.jsp?pid="+rs.getInt(1)+"'> <button class='btn- btn-primary'>Update</button></a></td>");
                   out.println("'<td><a href='delete?pid="+rs.getInt(1)+"'><button class='btn- btn-primary'>Delete</button></a></td>");
                   out.println("</tr>");

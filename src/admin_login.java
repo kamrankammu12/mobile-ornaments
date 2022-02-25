@@ -30,6 +30,7 @@ public class admin_login extends HttpServlet {
            PreparedStatement pst=con.prepareStatement("select password from register where email=?");
            pst.setString(1, em);
            ResultSet rs=pst.executeQuery();
+           response.setHeader("Cache-Control" , "no-cache , no-store,must-revalidate");
            if(!rs.next()){
                ses.setAttribute("valerrmsg","Email does not exists...!...Try again....");
                response.sendRedirect(response.encodeRedirectURL("admin_login.jsp"));
@@ -37,7 +38,7 @@ public class admin_login extends HttpServlet {
            else{
                if(rs.getString("password").equals(pw)){
                  ses.setAttribute("user_name",em);
-                 response.sendRedirect(response.encodeRedirectURL("/mobile-ornaments/admins/examples/stock.jsp"));  
+                 response.sendRedirect(response.encodeRedirectURL("/mobile-ornaments/admins/examples/dashboard.jsp"));  
                }
                else{
                   ses.setAttribute("valerrmsg","Invalid password.....!Try again.....");

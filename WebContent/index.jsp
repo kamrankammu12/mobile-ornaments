@@ -137,14 +137,14 @@
                             <div class="row">
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <img src="assets/img/mobile.jpg" alt="mobile" class="img-fluid""><br><br>
+                                        <img src="assets/img/iphone.jpg" alt="mobile" class="img-fluid""><br><br>
                                         <h3> iphone</h3><br><br>
                                        <a href="admins/examples/user_login.jsp" class="appointment-btn scrollto ">Book Now</a>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <img src="assets/img/mobile1.jpg" alt="mobile" class="img-fluid""><br><br>
+                                        <img src="assets/img/samsung.jpg" alt="mobile" class="img-fluid""><br><br>
                                         <h3> samsung</h3><br><br>
                                         <a href="admins/examples/user_login.jsp" class="appointment-btn scrollto ">Book Now</a>
                                     </div>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
-                                        <img src="assets/img/mobile2.jpg" alt="mobile" class="img-fluid""><br><br>
+                                        <img src="assets/img/oneplus.jpg" alt="mobile" class="img-fluid""><br><br>
                                         <h3> One Plus</h3><br><br>
                                         <a href="admins/examples/user_login.jsp" class="appointment-btn scrollto ">Book Now</a>
                                     </div>
@@ -225,7 +225,7 @@
            </div>
         </div>
         <div class="card col-lg-3 col-md-4 col-sm-6 col-12" style="width: 18rem;">
-         <img class="card-img-top" src="assets/img/vivo.jpg"><hr>
+         <img class="card-img-top" src="assets/img/vivoy33.jpg"><hr>
            <div class="card-body">
              <h5 class="card-title text-center">Vivo</h5>
              <p class="card-text text-center">RS 18,999/-</p>

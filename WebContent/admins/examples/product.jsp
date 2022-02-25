@@ -67,14 +67,8 @@
               </a>
             </li>
            
-            <li class="nav-item">
-              <a class="nav-link " href="User-data.jsp">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Users</span>
-              </a>
-            </li>
              <li class="nav-item">
-              <a class="nav-link active" href="#" style="background-color: aliceblue">
+              <a class="nav-link active" href="add_product.jsp" style="background-color: aliceblue">
                 <i class="ni ni-bold-right text-info"></i>
                 <span class="nav-link-text">Add Product</span>
               </a>
@@ -317,7 +311,7 @@
               <h3 class="mb-0">Add Products</h3>
             </div>
 	     
-	<p style="color:red;font-size: 18px;text-align: center"><% out.println(str);%></p>
+	
 
 		<div class="table-responsive">
 		 
@@ -331,6 +325,7 @@
                     <th scope="col" class="sort" data-sort="budget">Product_category</th>
                     <th scope="col">Quantity</th>
                     <th scope="col" class="sort" data-sort="completion">Price</th>
+                    <th scope="col" class="sort" data-sort="completion">Product image</th>
                     <th scope="col" class="sort" data-sort="completion">Action</th>
                    
                   </tr>
@@ -347,15 +342,16 @@
                             stmt.setInt(1,pid1);
                             ResultSet rs=stmt.executeQuery();
                             rs.next();
-                            out.println("<form action='Update' role='form' method='post'>");
+                            out.println("<form action='Update' role='form' method='post' enctype='multipart/form-data'>");
                 out.println("<tbody class='list'>");
                 out.println("<tr>");
                                
-                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;'><input type='number' required name='pid' class='form-control'  value='"+rs.getInt(1)+"' placeholder='ID' style='font-size: 15px; width: 150px; height: 30px; border-color: red;' autocomplete='off'></td>");
-                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='pname' class='form-control'  value='"+rs.getString(2)+"' placeholder='Product name' style='font-size: 15px; width: 150px; height: 30px; border-color: red;' autocomplete='off'></td>");
-                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='cat' class='form-control'  value='"+rs.getString(3)+"' placeholder='Category' style='font-size: 15px; width: 150px; height: 30px; border-color: red;' autocomplete='off'></td>");
-                out.println("<td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='qty' class='form-control' value='"+rs.getInt(4)+"' placeholder='Quantity' style='font-size: 15px; width: 200px; height: 30px; border-color: red;' autocomplete='off'></span></td>");
-                out.println("<td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='price' class='form-control'  value='"+rs.getInt(5)+"' placeholder='Price' style='font-size: 15px; width: 150px; height: 30px; border-color: red;' autocomplete='off' ></span></td>");
+                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;'><input type='number' required name='pid' class='form-control'  value='"+rs.getInt(1)+"' placeholder='ID' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>");
+                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='pname' class='form-control'  value='"+rs.getString(2)+"' placeholder='Product name' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>");
+                out.println("<td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='cat' class='form-control'  value='"+rs.getString(3)+"' placeholder='Category' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>");
+                out.println("<td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='qty' class='form-control' value='"+rs.getInt(4)+"' placeholder='Quantity' style='font-size: 15px; width: 200px; height: 30px; border-color: blue;' autocomplete='off'></span></td>");
+                out.println("<td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='price' class='form-control'  value='"+rs.getInt(5)+"' placeholder='Price' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off' ></span></td>");
+                out.println("<td><span style='padding-left: 10px; padding-right:10px;'><input type='file' required name='img' class='form-control'  value='"+rs.getString(6)+"' placeholder='Price'  autocomplete='off' ></span></td>");
                 out.println("<td><div class='add'><span><button type='submit' name='submit' class='btn btn-primary '> Update </button></span></div></td>");
 				out.println("</tr>"); 
 				out.println("</tbody>");

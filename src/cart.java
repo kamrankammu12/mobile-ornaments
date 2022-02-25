@@ -18,9 +18,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
 
-@WebServlet("/admins/examples/Update")
+@WebServlet("/admins/examples/cart")
 @MultipartConfig 
-public class Update extends HttpServlet {
+public class cart extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -28,41 +28,16 @@ public class Update extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession ses=request.getSession();
        int pid=Integer.parseInt(request.getParameter("pid"));
-       String prodnm=request.getParameter("pname");
-       String prodcat=request.getParameter("cat");
        int quantity=Integer.parseInt(request.getParameter("qty"));
-       float price=Float.parseFloat(request.getParameter("price"));
-       Part file = request.getPart("img");
        
-       String img_file_name = file.getSubmittedFileName();
-       String upload_path= "E:/Desk top/centum learnings/eclipse practice/mobile-ornaments/WebContent/assets/" + img_file_name;
        
-       try 
-       {
-       FileOutputStream fos =new  FileOutputStream(upload_path);
-       InputStream is = file.getInputStream();
-       
-       byte[] data = new byte[is.available()];
-       is.read(data);
-       fos.write(data);
-       fos.close();
-       } 
-       catch(Exception g)
-       {
-       	g.printStackTrace();
-       }
        
        try{
            Class.forName("com.mysql.cj.jdbc.Driver");
            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3308/admin","root","sandeep123"); 
-           PreparedStatement pst=con.prepareStatement("update products set product_name=?, product_category=?, quantity=?, price=?, images=? where product_id=?");
+           PreparedStatement pst=con.prepareStatement("update products set quantity=? where product_id=?");
            
-           
-           pst.setString(1,prodnm);
-           pst.setString(2, prodcat);
            pst.setInt(3, quantity);
-           pst.setFloat(4, price);
-           pst.setString(5, img_file_name);
            pst.setInt(6, pid);
           
            

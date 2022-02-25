@@ -1,4 +1,15 @@
-
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String str="";
+    Object ob=session.getAttribute("prod_up_msg");
+    if(ob!=null)
+        str=ob.toString();
+%>
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +20,7 @@
   <meta name="author" content="Creative Tim">
   <title>Mobile Ornaments</title>
   <!-- Favicon -->
- 
+  
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -47,20 +58,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Orders.jsp">
+              <a class="nav-link active " href="Orders.jsp">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Orders</span>
               </a>
             </li>
-            
-            <li class="nav-item">
-              <a class="nav-link active" href="User-data.jsp">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Users</span>
-              </a>
-            </li>
+           
              <li class="nav-item">
-              <a class="nav-link active" href="add_product.jsp" style="background-color: aliceblue">
+              <a class="nav-link active" href="#" style="background-color: aliceblue">
                 <i class="ni ni-bold-right text-info"></i>
                 <span class="nav-link-text">Add Product</span>
               </a>
@@ -100,6 +105,8 @@
       </div>
     </div>
   </nav>
+
+  
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
@@ -117,7 +124,7 @@
               </div>
             </div>
             <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">Ã</span>
             </button>
           </form>
           <!-- Navbar links -->
@@ -232,7 +239,7 @@
               </a>
               <div class="dropdown-menu  dropdown-menu-right ">
                 <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Mobile Ornaments..!</h6>
+                  <h6 class="text-overflow m-0">Mobile Ornaments</h6>
                 </div>
                 <a href="#!" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
@@ -277,14 +284,13 @@
                 </ol>
               </nav>
             </div>
-            <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">New</a>
-               
-            </div>
+            
           </div>
         </div>
       </div>
     </div>
+
+
     <!-- Page content -->
     <div class="container-fluid mt--6">
       <div class="row">
@@ -292,107 +298,42 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Normal Users</h3>
+              <h3 class="mb-0" style="color: blueviolet; font-size: 25px;">ADD</h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="sort" data-sort="name">Names</th>
-                    <th scope="col" class="sort" data-sort="budget">Orders</th>
-                    <th scope="col" class="sort" data-sort="status">Aproval Status</th>
-                    <th scope="col">Comments/Appointments</th>
-                    <th scope="col" class="sort" data-sort="completion">Update</th>
-                    <th scope="col" class="sort" data-sort="completion">Delete</th>
-                    <th scope="col" class="sort" data-sort="completion">Aproval</th>
-                    <th scope="col"></th>
+                    
+                    <th scope="col" class="sort" data-sort="name">ID</th>
+                    <th scope="col" class="sort" data-sort="budget">name</th>
+                    <th scope="col" class="sort" data-sort="status">category</th>
+                    <th scope="col" class="sort" data-sort="completion">qunatity</th>
+                    <th scope="col" class="sort" data-sort="completion">price</th>
+                    <th scope="col" class="sort" data-sort="name">Product Image</th>
+                    <th scope="col" class="sort" data-sort="completion">Action</th>
+                    
                   </tr>
                 </thead>
-               
-                <tbody class="list">
-                    
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                          <span class="avatar avatar-sm rounded-circle">
-                    
-                  </span>
-                        </a>
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm"><?jsp echo $result['name'];?></span>
-                        </div>
-                      </div>
-                    </th>
-                      
-                      
-                    <td class="budget">
-                      25
-                   
-                    <td>
-                     <span class="status">Boked an appointment</span>  
-                    </td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                         <a href=""><span class="status btn btn-primary">Edit</span></a>
-                         
-                      </div>
-                    </td>
-                      <td>
-                      <div class="d-flex align-items-center">
-                         <a href="#>"><span class="status btn btn-primary">Delete</span></a>
-                         
-                      </div>
-                      
-                      </td>
-                      
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v "></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item btn bg-light" href="#">Aprove</a>
-                          <a class="dropdown-item" href="#">Cancle</a>
-                          <a class="dropdown-item" href="#">Hold</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
                 
-         
-            
-                
-                </tbody>
+                <form action='add_product' role='form' method='post' enctype='multipart/form-data'>
+                <tbody class='list'>
+                <tr>
+                            
+                <td class='title' style='padding-left: 10px; padding-right:10px;'><input type='number' required name='pid' class='form-control'   placeholder='ID' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>
+                <td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='pname' class='form-control'   placeholder='Product name' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>
+                <td class='title' style='padding-left: 10px; padding-right:10px;' ><input type='text' required name='cat' class='form-control'   placeholder='Category' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off'></td>
+                <td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='qty' class='form-control'  placeholder='Quantity' style='font-size: 15px; width: 200px; height: 30px; border-color: blue;' autocomplete='off'></span></td>
+                <td><span style='padding-left: 10px; padding-right:10px;'><input type='number' required name='price' class='form-control'   placeholder='Price' style='font-size: 15px; width: 150px; height: 30px; border-color: blue;' autocomplete='off' ></span></td>
+                <td class='title' style='padding-left: 10px; padding-right:10px;'><input type='file' required name='img' class='form-control'></td>
+                <td><div class='add'><span><button type='submit' name='submit' class='btn btn-primary '> ADD </button></span></div></td>
+				</tr>
+				</tbody>
+				</form>
               </table>
             </div>
-            <!-- Card footer -->
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            
           </div>
         </div>
       </div>

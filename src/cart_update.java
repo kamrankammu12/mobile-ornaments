@@ -18,9 +18,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
 
-@WebServlet("/admins/examples/Update")
+@WebServlet("/admins/examples/cart_update")
 @MultipartConfig 
-public class Update extends HttpServlet {
+public class cart_update extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

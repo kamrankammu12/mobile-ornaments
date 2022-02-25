@@ -1,4 +1,11 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -67,59 +74,70 @@
       <tr>
         <th class="align-items-center">PRODUCT NAME</th>
         <th class="align-items-center">COST</th>
-        <th class="align-items-center">COUNT</th>
+        <th class="align-items-center">QUANTITY</th>
+        <th class="align-items-center">TOTAL</th>
         <th class="align-items-center"> ACTION</th>
         <th class="align-items-center"> CHECK OUT </th>
       </tr>
     </thead>
-    <tbody>
-      <tr >
+    <%
+                     int pid1=0;
+                     String p=request.getParameter("pid");
+                     //session.setAttribute("pids", p)
+                     if(p!= null)
+                   	 pid1=Integer.parseInt(p);
+                        try{
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3308/admin","root","sandeep123");  
+                            PreparedStatement stmt=con.prepareStatement("select * from products where product_id=?");
+                            stmt.setInt(1,pid1);
+                            ResultSet rs=stmt.executeQuery();
+                            rs.next();
+                            out.println("<form action='Update' role='form' method='post' enctype='multipart/form-data'>");
+    out.println("<tbody>");
+    out.println("<tr>");
         
-        <td class="align-items-center ">iphone</td>
-        <td class="align-items-center">40,999/-</td>
-        <td class="align-items-center"><input type="number"></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
-      </tr>
-      <tr >
-        
-        <td class="align-items-center ">Samsung</td>
-        <td class="align-items-center">23,999/-</td>
-        <td class="align-items-center"><input type="number"></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
-      </tr>
-      <tr >
-        
-        <td class="align-items-center ">Samsung</td>
-        <td class="align-items-center">23,999/-</td>
-        <td class="align-items-center"><input type="number"></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
-      </tr>
-      <tr >
-        
-        <td class="align-items-center ">Samsung</td>
-        <td class="align-items-center">23,999/-</td>
-        <td class="align-items-center"><input type="number"></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
-      </tr>
-      <tr >
-        
-        <td class="align-items-center ">Samsung</td>
-        <td class="align-items-center">23,999/-</td>
-        <td class="align-items-center"><input type="number"></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
-        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
-      </tr>
-      
-    </tbody>
+    out.println("<td class='align-items-center'>" + rs.getString(2)+"</td>");
+    out.println("<td class='align-items-center'>" + rs.getInt(5)+"</td>");
+    out.println("<td class='align-items-center'><input type='number' value='"+rs.getInt(4)+"'></td>");
+    out.println("<td class='align-items-center'>" + "500" + "</td>");
+    out.println("<td class='align-items-center'> <a href='#' class='appointment-btn scrollto text-center'>DELETE</a></td>");
+    out.println("<td class='align-items-center'> <a href='#' class='appointment-btn scrollto text-center'>CHECK OUT</a></td>");
+    out.println("</tr>");
+    out.println("<tr >");
+    
+    out.println("</tbody>");
+                        
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                %>
   </table>
   </div>
      
      </div>
    
+     <!--   
+        <td class="align-items-center ">Samsung</td>
+        <td class="align-items-center">23,999/-</td>
+        <td class="align-items-center"><input type="number"></td>
+        <td class="align-items-center">23,999/-</td>
+        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
+        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
+      </tr>
+      <tr >
+        
+        <td class="align-items-center ">Samsung</td>
+        <td class="align-items-center">23,999/-</td>
+        <td class="align-items-center"><input type="number"></td>
+        <td class="align-items-center">23,999/-</td>
+        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">DELETE</a></td>
+        <td class="align-items-center"> <a href="#" class="appointment-btn scrollto text-center">CHECK OUT</a></td>
+      </tr>
+     -->
+      
+
   
 
         <div class="container d-md-flex py-4">

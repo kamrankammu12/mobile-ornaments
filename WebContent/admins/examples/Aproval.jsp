@@ -69,15 +69,9 @@
                 <span class="nav-link-text">Orders</span>
               </a>
             </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="User-data.jsp">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Users</span>
-              </a>
-            </li>
+           
              <li class="nav-item">
-              <a class="nav-link active" href="#" style="background-color: aliceblue">
+              <a class="nav-link active" href="add_product.jsp" style="background-color: aliceblue">
                 <i class="ni ni-bold-right text-info"></i>
                 <span class="nav-link-text">Add Product</span>
               </a>

@@ -1,3 +1,10 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,25 +89,51 @@
 
                 </ul>
             </nav><!-- .nav-menu -->
-
-          
-
         </div>
     </header><!-- End Header -->
 
    
-  <div class="container-fluid">
-    <div class="row">
-        <div class="card col-lg-3 col-md-4 col-sm col-12" style="width: 18rem;">
-         <img class="card-img-top" src="assets/img/mobile.jpg" alt="Card image cap">
-         <hr>
-           <div class="card-body">
-             <h5 class="card-title text-center">iphone 12</h5>
-             <p class="card-text text-center"> RS 50,999/-</p>
-             <center><a href="#" class="btn btn-primary">Buy now </a></center><br>
-              <center><a href="#" class="btn btn-primary">Add to Cart</a></center>
-           </div>
-        </div>
+   
+         <%    
+            try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3308/admin","root","sandeep123");  
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("select * from products");
+                
+                 
+  out.print("<div class='container-fluid'>");
+ 
+        out.print("<div class='row'>");
+          
+        while(rs.next()){  
+       
+        
+        	 out.print("<div class='card col-lg-3 col-md-4 col-sm-6 col-12' style='width: 18rem;'>");
+         
+         out.print("<img class='card-img-top text-center' src='assets/img/" + rs.getString(6) + "' alt='Card image cap'>");
+         out.print("<hr>");
+         out.print("<div class='card-body'>");
+         out.print("<h5 class='card-title text-center'>" + rs.getString(2) + "</h5>");
+         out.print("<p class='card-text text-center'> RS " + rs.getInt(5) + " /-</p>");
+         
+         out.print("<center><a href='#' class='btn btn-primary'>Buy now </a></center><br>");
+         
+         out.print("<center><a href='cart.jsp?pid="+rs.getInt(1)+"' class='btn btn-primary'>Add to Cart</a></center>");
+         out.print("</div>");
+         out.print("</div>");
+         
+        
+                        }
+        out.print("</div>");
+                        }
+                       
+         
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                %>
+         <!--  
         <div class="card col-lg-3 col-md-4 col-sm-6 col-12" style="width: 18rem;">
          <img class="card-img-top text-center" src="assets/img/mobile1.jpg" alt="Card image cap"><hr>
            <div class="card-body">
@@ -171,9 +204,8 @@
              <br>
               <center><a href="#" class="btn btn-primary">Add to Cart</a></center>
            </div>
-        </div>
-      </div>
-    </div> 
+        </div>-->
+      
      
 <br>
 <br>
